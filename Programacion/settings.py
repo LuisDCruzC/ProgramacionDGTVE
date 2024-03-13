@@ -37,8 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'programacionDGTVE.ProgramaciondgtveConfig',
-    'user.UserConfig',
+    'programacionDGTVE',
+    'user',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [
@@ -78,7 +79,7 @@ WSGI_APPLICATION = 'Programacion.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'programacionDGTVE',
+        'NAME': 'programasDGTVE',
         'USER': 'postgres', 
         'PASSWORD': 'admin', 
         'HOST': '127.0.0.1',
@@ -123,6 +124,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATIC_FILE_DIR = [
+    'programacionDGTVE/static',
+    'user/static',
+]
+
+#Ubicacion de los archivos static
+STATIC_ROOT = BASE_DIR / 'static'
+
+#URL publica para los archivos media
+MEDIA_URL = 'media/'
+
+#Ubicacion del archivo media
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

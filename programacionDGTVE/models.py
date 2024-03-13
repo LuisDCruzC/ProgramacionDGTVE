@@ -28,7 +28,7 @@ class Canal(models.Model):
 
     nombreCanal = models.CharField(max_length=50, null=False, blank=False)
     numeroCanal = models.IntegerField(null=False, blank=False)
-    logo = models.ImageField(blank=True, null=True)
+    logo = models.ImageField(upload_to='Canales', blank=True, null=True)
 
     class Meta:
         verbose_name = 'Canal'
@@ -76,7 +76,7 @@ class TipoSerie(models.Model):
 
 class Serie(models.Model):
     nombreSerie = models.CharField(max_length=150, null=False, blank=False)
-    sinopsis = models.CharField(max_lenght=150, null=True, blank=True)
+    sinopsis = models.CharField(max_length=150, null=True, blank=True)
     anioProduccion = models.DateField(null=False, blank=False)
     duracion = models.TimeField(null=False, blank=False)
     formatoCinta = models.CharField(max_length=20)
@@ -116,6 +116,7 @@ class Programa(models.Model):
     canal_id = models.ForeignKey(Canal, on_delete=models.CASCADE, null=False, blank=False)
     clasificacion_id = models.ForeignKey(Clasificacion, on_delete=models.CASCADE, null=False, blank=False)
     atributo_id = models.ForeignKey(Atributo, on_delete=models.CASCADE, null=False, blank=False)
+    serie_id = models.ForeignKey(Serie, on_delete=models.CASCADE, null=False, blank=False)
 
     class Meta:
         verbose_name = 'Programa'
