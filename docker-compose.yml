@@ -1,0 +1,18 @@
+version: '3.3'
+services:
+  programacion:
+    image: postgres:16
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=programacionDGTVE
+    ports:
+      - '5432:5432'
+    volumes:
+      - programacion:/var/lib/postgresql/data
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+volumes:
+  programacion:
+    driver: local
